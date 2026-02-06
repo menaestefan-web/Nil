@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Valentine ❤️</title>
+
+<style>
+body{
+background:#ffe6ee;
+font-family:Arial;
+text-align:center;
+overflow:hidden;
+}
+
+#container{
+margin-top:100px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+#yes{
+background:#ff4d79;
+color:white;
+}
+
+#no{
+position:absolute;
+background:#999;
+color:white;
+}
+
+#cat{
+display:none;
+width:300px;
+margin:30px auto;
+}
+
+.heart{
+position:fixed;
+font-size:24px;
+animation:float 3s linear;
+}
+
+@keyframes float{
+0%{bottom:0;opacity:1}
+100%{bottom:100%;opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+<h1>Hey Nilay, happy Valentine’s Day ❤️</h1>
+<h2>You know how much I love you.<br>Would you be my Valentine?</h2>
+
+<button id="yes">Yes</button>
+<button id="no">No</button>
+
+<img id="cat" src="cat.png">
+
+<h2 id="final" style="display:none;">
+I love you so much ❤️ Happy Valentine babe!
+</h2>
+</div>
+
+<script>
+let no=document.getElementById("no");
+let yes=document.getElementById("yes");
+let cat=document.getElementById("cat");
+let final=document.getElementById("final");
+
+let tries=0;
+
+no.style.left="50%";
+no.style.top="60%";
+
+no.addEventListener("mouseover",()=>{
+if(tries<3){
+let x=Math.random()*(window.innerWidth-100);
+let y=Math.random()*(window.innerHeight-100);
+no.style.left=x+"px";
+no.style.top=y+"px";
+tries++;
+}else{
+cat.style.display="block";
+}
+});
+
+yes.onclick=()=>{
+no.style.display="none";
+cat.style.display="none";
+final.style.display="block";
+
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"%";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),3000);
+},300);
+};
+</script>
+
+</body>
+</html>
